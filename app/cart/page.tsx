@@ -11,23 +11,32 @@ import { Trash2 } from 'lucide-react'
 const mockCartItems = [
   { id: 1, name: 'iPhone 13 Pro', price: 999, quantity: 1, image: 'https://images.unsplash.com/photo-1603791239531-1dda55e194a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80' },
   { id: 2, name: 'MacBook Air', price: 999, quantity: 1, image: 'https://images.unsplash.com/photo-1587560699334-cc4ff634909a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80' },
-]
+] as CartItem[]
+
+// 定义 CartItem 类型
+type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+};
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   useEffect(() => {
     // Simulate fetching cart data
     setCartItems(mockCartItems)
   }, [])
 
-  const updateQuantity = (id, newQuantity) => {
+  const updateQuantity = (id: number, newQuantity: string) => {
     setCartItems(cartItems.map(item => 
       item.id === id ? { ...item, quantity: parseInt(newQuantity) } : item
     ))
   }
 
-  const removeItem = (id) => {
+  const removeItem = (id: number) => {
     setCartItems(cartItems.filter(item => item.id !== id))
   }
 

@@ -9,13 +9,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 export default function Account() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Implement actual login logic here
     setIsLoggedIn(true)
   }
 
-  const handleSignup = (e) => {
+  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Implement actual signup logic here
     setIsLoggedIn(true)
